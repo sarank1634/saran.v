@@ -1,6 +1,6 @@
 import Link from "next/link";
-export default function Users( {params} : {params: {id: string}}) {
-    const {id} = params;
+export default async function Users( {params} : {params: {id: string}}) {
+    const {id} = await params;
     return (
         <div>
             <h1>users Details page</h1>
