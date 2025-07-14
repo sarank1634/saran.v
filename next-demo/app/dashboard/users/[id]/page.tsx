@@ -4,7 +4,7 @@ export default function Users( {params} : {params: {id: string}}) {
     return (
         <div>
             <h1>users Details page</h1>
-            <h1>
+            <h1 className="text-2xl font-bold">
                 User profile: {id};
             </h1>
         </div>
