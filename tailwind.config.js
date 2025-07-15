@@ -7,7 +7,14 @@ module.exports = {
     "./yc_directory/src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+        screens: {
+            'xs': '425px'
+        }, 
+        colors: {
+           "100" = "#fFEFEF"
+        }
+    },
   },
   plugins: [],
 }
