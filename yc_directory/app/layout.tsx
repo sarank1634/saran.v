@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import path from "path";
+
+const workSans = localfont( options:{
+  src: [
+  path: "./assets/fonts/WorkSans-Regular.ttf",
+  weight : '900'
+  style : 'normal'
+  ]
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
