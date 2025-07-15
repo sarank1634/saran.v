@@ -12,9 +12,9 @@ module.exports = {
             'xs': '425px'
         }, 
         colors: {
-           "100" = "#fFEFEF"
+           my100: "#fFEFEF"
         }
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 }
