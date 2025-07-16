@@ -1,10 +1,22 @@
 
-import SearchForm from "../components/searchForm";
+import SearchForm from "../components/SearchForm";
+import StartupCard from "../components/StartupCard";
 
 export default async function Home( {searchParams}:{
   searchParams: Promise<{query: string}> 
 }) {
   const query =  (await searchParams).query;
+ 
+  const posts  = [{ _createAt: 'yesterday',
+    views: 55,
+    author: { _id:1},
+    _id: 1,
+    description: "This is a test post",
+    category: "Robots",
+    title: "Robotics",
+  }
+  ]
+
   return (
     <>
      <div className="bg-pink-500 text-white-center py-8 px-10">
@@ -20,6 +32,11 @@ export default async function Home( {searchParams}:{
         <p className="text-30-semibold">
           {query? `Search results for ${query}`: `All Startups`}
         </p>
+        {/* cmd=shift+f*/}
+
+        <ul className="mt-7 card_gird">
+          <StartupCard/>
+        </ul>
       </section>
     
     </>
