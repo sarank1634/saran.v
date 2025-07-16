@@ -53,12 +53,12 @@
 @layer components {
     /* Search form styling */
     .search-form {
-        @apply flex gap-2 border border-gray-300 rounded-md bg-white p-2;
+        @apply flex gap-2 border border-black rounded-md bg-white p-2 rounded-sm;
     }
 
     /* Search input field styling */
     .search-input {
-        @apply flex-1 bg-gray-100 text-gray-800 placeholder-gray-500 px-2 py-1 rounded-md focus:outline-none focus:border-blue-500;
+        @apply flex-1 bg-gray-100 text-gray-800 placeholder-gray-500 px-2 py-1 rounded-md focus:outline-none focus:border-black/300;
     }
 
     /* Search button styling */
