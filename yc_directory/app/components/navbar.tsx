@@ -7,7 +7,7 @@ const Navbar = () => {
     const { data: session } = useSession();
     return (
         <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
-            <nav className="flex justify-between items-center">
+            <nav className="flex-between">
                 <Link href="/">
                     <img src="/logo.png" alt="Logo" width={144} height={30} />
                 </Link>
