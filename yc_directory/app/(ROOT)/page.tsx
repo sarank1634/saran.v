@@ -7,9 +7,9 @@ export default async function Home( {searchParams}:{
 }) {
   const query =  (await searchParams).query;
  
-  const posts  = [{ _createAt: 'yesterday',
+  const posts  = [{ _createAt: new Date(),
     views: 55,
-    author: { _id:1},
+    author: { _id:1, name: "alan"},
     _id: 1,
     description: "This is a test post",
     category: "Robots",
@@ -28,13 +28,18 @@ export default async function Home( {searchParams}:{
             </p>
             <SearchForm query={query}/>
       </div> 
+  
       <section className="section_container">
         <p className="text-30-semibold">
           {query? `Search results for ${query}`: `All Startups`}
         </p>
         {/* cmd=shift+f*/}
 
-        <ul className="mt-7 card_gird">
+        <ul className="mt-7 card_gird">{
+          posts?.length > 0 ? (
+            posts.map(post: StarupCardType, index: number) => (
+              <StartupCard key={post?._id}: post={post} />
+            ))}
           <StartupCard/>
         </ul>
       </section>
