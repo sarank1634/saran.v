@@ -33,14 +33,16 @@ export default async function Home( {searchParams}:{
         <p className="text-30-semibold">
           {query? `Search results for ${query}`: `All Startups`}
         </p>
-        {/* cmd=shift+f*/}
+        {/* cmd=shif */}
 
-        <ul className="mt-7 card_gird">{
-          posts?.length > 0 ? (
-            posts.map(post: StarupCardType, index: number) => (
-              <StartupCard key={post?._id}: post={post} />
-            ))}
-          <StartupCard/>
+      <ul className="mt-7 card_gird">
+        {posts && posts.length> 0 ? (
+          posts.map((post : StartupCardType, index: number) => (
+            <StartupCard key={post._id || index} post={post} />
+          ))
+        ) : (
+          <li>No posts found</li>
+        )}
         </ul>
       </section>
     

@@ -57,6 +57,10 @@
     @apply grid md:grid-cols-2 sm:grid-cols-1 gap-5;
 }
 @layer components {
+    /* Startup card styling */
+    .startup-card {
+        @apply border-4 border-black rounded-lg p-4 ms-8 me-8;
+    }
     /* Search form styling */
     .search-form {
         @apply flex gap-2 border border-black rounded-md bg-white p-2 rounded-sm;

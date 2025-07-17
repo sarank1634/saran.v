@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "*",
       }
-    ]
+    ],
+  },
 };
-
 export default nextConfig;
