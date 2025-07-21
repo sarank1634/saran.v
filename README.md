@@ -99,6 +99,11 @@ export default Navbar;
 Mock inter view 21-july-2025
 Here’s a consolidated React Interview Q&A Guide — structured for quick reading and interview preparation. It includes Beginner, Intermediate, Advanced, and Ecosystem/Tooling questions with clear and precise answers.
 
+
+
+
+
+
 🔰 Beginner-Level React Questions
 1. What is React?
 A JavaScript library by Facebook for building fast, dynamic UIs using a component-based architecture.
