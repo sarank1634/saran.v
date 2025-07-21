@@ -97,199 +97,276 @@ export default Navbar;
 
 
 Mock inter view 21-july-2025
+Here’s a consolidated React Interview Q&A Guide — structured for quick reading and interview preparation. It includes Beginner, Intermediate, Advanced, and Ecosystem/Tooling questions with clear and precise answers.
 
 🔰 Beginner-Level React Questions
 1. What is React?
-React is a JavaScript library for building user interfaces, developed by Facebook. It's used for creating fast, dynamic, and interactive web applications using a component-based architecture.
+A JavaScript library by Facebook for building fast, dynamic UIs using a component-based architecture.
 
 2. What are components in React?
-Components are the building blocks of a React app. They are reusable pieces of code that return React elements (UI). There are two types: Functional and Class components.
+Reusable pieces of UI. Two types:
+
+Functional Components
+
+Class Components
 
 3. What is JSX?
-JSX (JavaScript XML) is a syntax extension for JavaScript that looks like HTML. It allows you to write HTML elements in JavaScript and place them in the DOM using React.
+JSX stands for JavaScript XML. It allows HTML-like syntax in JavaScript, which React transforms into React.createElement() calls.
 
-4. What is the difference between functional and class components?
+4. Difference between Functional and Class Components?
 
-Functional: Use functions, easier syntax, support Hooks.
+Functional	Class
+Uses functions	Uses ES6 classes
+Supports Hooks	Uses lifecycle methods
+Cleaner syntax	More boilerplate
 
-Class: Use ES6 classes, have lifecycle methods and this keyword.
-Now, functional components with Hooks are preferred.
-
-5. What is a state in React?
-State is a built-in object used to store data that can change over time. When the state changes, the component re-renders.
+5. What is state in React?
+A built-in object to store dynamic data within a component. State changes trigger re-rendering.
 
 6. What are props in React?
-Props (short for properties) are used to pass data from parent to child components. They are read-only.
+Props are short for properties. They are read-only inputs passed from parent to child.
 
-7. What is the difference between props and state?
+7. Difference between props and state?
 
-Props: Passed from parent, read-only.
+Props: Passed from parent, immutable.
 
-State: Managed inside the component, can change.
+State: Local, mutable.
 
 8. What is a key in React and why is it important?
-A key is a unique identifier for elements in a list. React uses keys to track changes and improve rendering performance.
+A unique identifier for list items. Helps React identify which items changed, improved performance.
 
 9. How does React handle events?
-React handles events using camelCase syntax (onClick, onChange). You pass a function as the event handler.
+Using camelCase syntax:
 
-10. What is conditional rendering in React?
-It means rendering components or elements based on certain conditions (using if, ternary, or logical &&).
+jsx
+Copy
+Edit
+<button onClick={handleClick}>Click</button>
+10. What is conditional rendering?
+Rendering different UI based on conditions.
+Example:
 
-⚡️ Intermediate-Level React Questions
-11. What is the Virtual DOM and how does it work?
-Virtual DOM is a lightweight copy of the real DOM. React compares changes using diffing and updates only the changed parts, improving performance.
+jsx
+Copy
+Edit
+{isLoggedIn ? <Logout /> : <Login />}
+⚡ Intermediate-Level React Questions
+11. What is the Virtual DOM?
+A lightweight copy of the real DOM. React updates the Virtual DOM, compares it with the previous version (diffing), and applies minimal updates to the real DOM (reconciliation).
 
-12. What are React Hooks? Name a few.
-Hooks are functions that let you use state and lifecycle features in functional components.
-Examples: useState, useEffect, useRef, useContext, useMemo.
+12. What are Hooks in React?
+Special functions that let functional components use state and other features.
+Common Hooks:
+
+useState()
+
+useEffect()
+
+useRef()
+
+useContext()
+
+useMemo()
 
 13. What is useState()?
-A Hook that adds local state to functional components.
+A Hook for managing state in functional components:
 
-js
+jsx
 Copy
 Edit
 const [count, setCount] = useState(0);
 14. What is useEffect()? How is it different from lifecycle methods?
-useEffect lets you perform side effects (e.g., fetching data). It's similar to componentDidMount, componentDidUpdate, and componentWillUnmount in class components.
+Used for side effects like fetching data, timers, or subscriptions.
+Runs after render — replaces componentDidMount, componentDidUpdate, and componentWillUnmount.
 
-15. What are controlled and uncontrolled components?
+15. Controlled vs Uncontrolled Components?
 
-Controlled: React manages the form data using state.
+Controlled: React controls input via state.
 
-Uncontrolled: DOM manages the data via ref.
+Uncontrolled: Uses refs; DOM manages input.
 
-16. What is lifting state up in React?
-It’s when you move the shared state to the closest common ancestor of components that need it.
+16. What is lifting state up?
+Moving shared state to the closest common ancestor component to manage it centrally.
 
-17. How do you pass data from child to parent in React?
-By passing a function from the parent as a prop to the child, then calling it with data inside the child.
+17. How to pass data from child to parent?
+Via callback functions:
 
-18. What is context in React? When would you use it?
-Context lets you pass data deeply without prop drilling. Use it for global data like themes or authenticated user info.
+jsx
+Copy
+Edit
+Parent: <Child onSend={handleData} />
+Child: props.onSend(data)
+18. What is Context API?
+A global state system to avoid prop drilling.
+Example: Theme, Language, Auth.
 
-19. What is prop drilling and how can it be avoided?
-Prop drilling is passing props through many layers. Avoid it using Context API or state management libraries like Redux.
+19. What is prop drilling? How to avoid it?
+Passing props through many layers.
+Avoid using:
 
-20. What are fragments in React?
-Fragments let you group elements without adding extra nodes to the DOM:
+Context API
 
-js
+Redux / Zustand
+
+20. What are Fragments?
+Used to group elements without adding extra DOM nodes:
+
+jsx
 Copy
 Edit
 <></> or <React.Fragment></React.Fragment>
 🔥 Advanced-Level React Questions
 21. What is React Reconciliation?
-Reconciliation is the process of updating the DOM when the component's state or props change. React compares the new and old virtual DOM and updates only the changed elements.
+The process of comparing Virtual DOM trees to find changes and update the real DOM efficiently.
 
 22. How does React optimize performance?
-By using:
 
 Virtual DOM
 
 Keys in lists
 
-Memoization (React.memo, useMemo)
+React.memo, useMemo, useCallback
 
-Code splitting
+Code-splitting
 
 Lazy loading
 
-Avoiding unnecessary re-renders
+Avoid unnecessary re-renders
 
-23. What is memoization (React.memo, useMemo, useCallback)?
-Memoization caches results:
+23. What is memoization?
+Caching expensive computations or components to prevent recalculations:
 
-React.memo: Prevents re-render if props didn’t change.
+React.memo() – avoids re-render if props don't change.
 
-useMemo: Caches a computed value.
+useMemo() – memoize values.
 
-useCallback: Caches a function.
+useCallback() – memoize functions.
 
-24. Difference: useEffect vs useLayoutEffect vs useInsertionEffect?
+24. Difference between useEffect, useLayoutEffect, and useInsertionEffect?
 
-useEffect: Runs after render.
+Hook	Runs After DOM Paint?	Use Case
+useEffect	✅	API calls, subscriptions
+useLayoutEffect	❌ (before paint)	DOM measurements
+useInsertionEffect	❌ (CSS-in-JS tools)	Inject styles early
 
-useLayoutEffect: Runs before painting (sync).
+25. React's Rendering Process?
 
-useInsertionEffect: Runs before any DOM mutation (used for libraries like CSS-in-JS).
+Renders virtual DOM
 
-25. Explain the working of React's rendering process.
-React creates a virtual DOM, compares it with the previous version (diffing), calculates minimal DOM changes (reconciliation), and updates the real DOM efficiently.
+Diffs with previous virtual DOM
 
-26. How do you handle side effects in React?
-Using useEffect, useLayoutEffect, and cleanup functions for unsubscribing or cleaning resources.
+Reconciles minimal changes to real DOM
 
-27. What are higher-order components (HOC)?
-Functions that take a component and return a new component with added behavior.
+26. Handling side effects?
+Using useEffect for:
+
+Fetching data
+
+Subscriptions
+
+Timers
+
+Cleanup on unmount
+
+27. What are Higher-Order Components (HOC)?
+Functions that take a component and return a new component with added features.
+
+jsx
+Copy
+Edit
+const WithLogger = (Component) => (props) => { ... }
+28. What are Render Props?
+Sharing logic via props that are functions:
+
+jsx
+Copy
+Edit
+<DataProvider render={(data) => <Chart data={data} />} />
+29. What are Error Boundaries?
+Class components that catch JavaScript errors:
 
 js
 Copy
 Edit
-const Enhanced = withLogger(MyComponent);
-28. What are render props?
-A pattern where a prop is a function that returns JSX, allowing sharing code logic between components.
+componentDidCatch(error, info)
+30. What are Custom Hooks?
+Functions starting with use that encapsulate reusable logic.
+Example:
 
-29. How does React handle error boundaries?
-Using a class component with componentDidCatch() and getDerivedStateFromError() to catch and display errors in the UI tree.
-
-30. What are custom hooks and when should you use them?
-Custom hooks are user-defined functions using other hooks. Use them to extract and reuse logic.
-
+js
+Copy
+Edit
+function useLocalStorage(key, value) { ... }
 🧠 React Ecosystem & Tooling Questions
-31. What is Redux? How does it work with React?
-Redux is a state management library. It uses actions, reducers, and a store to manage global state. You connect it to React using react-redux.
+31. What is Redux?
+A global state container. It uses:
 
-32. Difference between Redux and Context API?
+Store (holds state)
 
-Context: Simple, for light use like themes.
+Actions (describe changes)
 
-Redux: More complex, better for large apps with predictable state changes.
+Reducers (update state)
 
-33. What is Next.js and how does it enhance React?
-Next.js is a React framework for building full-stack apps. It adds:
+32. Redux vs Context API?
 
-File-based routing
+Feature	Redux	Context API
+Use case	Complex state	Simple global
+Middleware	Yes	No
+Boilerplate	More	Less
 
-Server-side rendering
+33. What is Next.js?
+A React framework for:
 
-Static site generation
+Server-side rendering (SSR)
+
+Static generation (SSG)
 
 API routes
 
-34. How do you do server-side rendering in React?
-Use frameworks like Next.js. It renders HTML on the server and sends it to the client.
+File-based routing
 
-35. What is React Router and how does routing work in SPA?
-React Router enables navigation in single-page apps (SPA) without reloading. It uses components like <Route>, <Link>, and <BrowserRouter>.
+34. Server-side rendering in React?
+Use Next.js or ReactDOMServer.renderToString() to render components to HTML on the server.
 
-36. What is the use of React DevTools?
-React DevTools is a browser extension that helps inspect the component tree, props, state, and performance.
+35. What is React Router?
+Library to handle routing in React SPA using:
 
-37. Explain code splitting in React.
-Splitting code into smaller chunks to load only what’s needed. Use React.lazy() and Suspense for component-level lazy loading.
+<BrowserRouter>, <Routes>, <Route>, <Link>
 
-38. What are portals in React?
-Portals let you render children into a different part of the DOM (outside the root node). Useful for modals, tooltips.
+36. What is React DevTools?
+A Chrome/Firefox extension to inspect the React component tree, props, and state.
 
-39. What are suspense and lazy loading?
-Suspense lets you wait for some code to load (like lazy components or data).
-lazy() loads components dynamically.
+37. What is code splitting?
+Breaking the app into smaller bundles to load only what's needed. Use:
 
-40. Performance optimization techniques in large React apps?
+React.lazy()
 
-Memoization (React.memo, useMemo, useCallback)
+Suspense
+
+38. What are Portals?
+Render a component outside the root DOM node:
+
+js
+Copy
+Edit
+ReactDOM.createPortal(child, container)
+39. Suspense and Lazy Loading?
+
+lazy(): Dynamically import components.
+
+Suspense: Fallback UI until lazy-loaded components are ready.
+
+40. Performance Optimization in React Apps?
+
+Use React.memo, useMemo, useCallback
 
 Code splitting
 
-Virtualization (e.g. react-window)
+Virtualization (e.g., react-window)
 
-Lazy loading images
+Lazy loading
 
-Avoid unnecessary re-renders
+Debounce/throttle inputs
 
-Batching state updates
-
-Using CDN for static assets
+Avoid unnecessary state updates
 
